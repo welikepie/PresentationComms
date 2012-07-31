@@ -45,7 +45,7 @@ function sendMessage() {
     }
 	);
 document.getElementById('sendbox').value = null;
-document.getElementById('messagebox').value += "\n SENT: "+document.getElementById('sendbox').value;
+document.getElementById('messagebox').value += "\n"+" SENT: "+document.getElementById('sendbox').value;
 };
 
 
