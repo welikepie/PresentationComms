@@ -42,8 +42,11 @@ function clockdisplay() {
 	var day = currentDate.getDate();
 	var month = currentDate.getMonth() + 1;
 	var year = currentDate.getFullYear();
+	
 	var remaintimemin = Math.floor(parseFloat(settime) - (parseFloat(Math.ceil(currentDate.getTime() - ScurrentDate.getTime())) / 60000));
+		//calculates remaining minutes by getting the set ammount in minutes and difference in time, in minutes.
 	var remaintimesec = Math.floor(parseFloat(settime * 60) - (parseFloat(Math.ceil(currentDate.getTime() - ScurrentDate.getTime())) / 1000)) - (remaintimemin * 60);
+	
 	if (minute < 10) {
 		minute = "0" + minute;
 	}
@@ -53,10 +56,12 @@ function clockdisplay() {
 	if (remaintimesec == 0 && remaintimemin == 0) {
 		alert("Time up!");
 	}
+	
 	if (remaintimesec <= 0 && remaintimemin <= 0) {
 		remaintimesec = 0;
 		remaintimemin = 0;
 	}
+	
 	document.getElementById('clockdisplay').innerHTML = "<b>Current Date: </b>" + day + "/" + month + "/" + year + "<br><b>Current Time: </b>" + hour + ":" + minute + ":" + seconds;
 	document.getElementById('alarmdisplay').innerHTML = "<b>Alarm set for: " + settime + " minutes.</b><br><b>Time Remaining: " + remaintimemin + " minutes, " + remaintimesec + " seconds.";
 	window.setTimeout("clockdisplay()", 1000);

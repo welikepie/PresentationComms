@@ -1,7 +1,9 @@
 var connection;
 var sendButton = document.getElementById('send');
 
-window.onload = function() {
+
+
+window.onload = function() { 
 	if (sendButton.addEventListener) {
 		sendButton.addEventListener(
 			"click", sendMessage, false
@@ -13,20 +15,12 @@ window.onload = function() {
 	};}
 }
 
-function sendMessage() {
-	PUBNUB.publish({             // SEND A MESSAGE.
-                channel : "speaker",
-                message : document.getElementById('sendbox').value
-            })
-            document.getElementById('sendbox').value = null;
-	document.getElementById('messagebox').value = document.getElementById('messagebox').value+"\n SENT: "+document.getElementById('sendbox').value;
-}
-
-if (window.WebSocket)
-	webSocketsOn();
-else
+if (window.WebSocket){	
+	webSocketsOn();}
+else{
 	webSocketsOff();
-
+	}
+	
 function webSocketsOn() {
 	if (window.MozWebSocket) {
 		window.WebSocket = window.MozWebSocket;
@@ -38,6 +32,17 @@ function webSocketsOn() {
 function webSocketsOff() {
 	document.getElementById('messagebox').innerHTML = "Browser No Can Haz Websockets :(";
 }
+
+
+function sendMessage() {
+	PUBNUB.publish({             // SEND A MESSAGE.
+                channel : "speaker",
+                message : document.getElementById('sendbox').value
+            })
+            document.getElementById('sendbox').value = null;
+	document.getElementById('messagebox').value = document.getElementById('messagebox').value+"\n SENT: "+document.getElementById('sendbox').value;
+}
+
 
 (function(){
  
