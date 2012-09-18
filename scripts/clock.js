@@ -94,7 +94,7 @@ function clockdisplay() {
 		finished = true;
 	}
 	if (finished == true) {
-		document.getElementById("container").style.backgroundColor = "rgb(" + oldRed + "," + oldGreen + "," + oldBlue + ")";
+		document.getElementById("container").style.backgroundColor = "rgb(" + newRed + "," + newGreen + "," + newBlue + ")";
 		remaintimemin = "00";
 		remaintimesec = "00";
 	}
@@ -235,10 +235,10 @@ function backgroundChange() {
 				messageWindow();
 			}
 
-			/*PUBNUB.publish({
+			PUBNUB.publish({
 			 channel: "speaker",
-			 //message: "Time:1"
-			 })*/
+			 message: "Time:1"
+			 })
 
 		}
 	})
