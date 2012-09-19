@@ -5818,7 +5818,7 @@ $.widget( "mobile.textinput", $.mobile.widget, {
 			});
 
 		// Autogrow
-		if ( input.is( "textarea" ) ) {
+		/*if ( input.is( "textarea" ) ) {
 			var extraLineHeight = 15,
 				keyupTimeoutBuffer = 100,
 				keyup = function() {
@@ -5846,7 +5846,7 @@ $.widget( "mobile.textinput", $.mobile.widget, {
 				// the DOM and CSS
 				$( window ).load( keyup );
 			}
-		}
+		} */
 	},
 
 	disable: function(){
