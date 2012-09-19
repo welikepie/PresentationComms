@@ -16,55 +16,58 @@
 		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		  <script src="scripts/jqueryCore1-7-1.js"></script>
+  <script src="scripts/jqueryMobile1-1.js"></script>
 	</head>
 	<body>
 		<div class="container">
 			<div class="containeything">
-			<div class="timetop">
-			<span>22:13</span>
+			<div class="timetop" id="timeywimey">
+			<span>00:00</span>
 			</div>
-			<div class="slider">
-				
+			<div class="slider" data-role="content" id="sliderThing">
+
+			<input type=range min=0 max=60 id="timeSetting" onchange="updateStuff()"/>
 			</div>
 			<div class="menu">
 				<div class="leftButtons">
 					<div class="pause">
-						<span>pause</span>
+						<span onclick="pauseMe()">pause</span>
 					</div>
-					<div class="reset">
+					<div class="reset" onclick="reset()">
 						<span>reset</span>
 					</div>
 				</div>
-				<div class="start">
+				<div class="start" onclick = "start()">
 						<span>start</span>
 				</div>
 			</div>
 			<div class="sayings">
 				<div class="things">
-					<div class = "sayingThings">
-						<span>shut the fuck up</span>
+					<div class = "sayingThings" id="messageOne">
+						<span id="messageone">shut the fuck up</span>
 					</div>
-					<div class = "sayingThings">
-						<span>up the shut fuck</span>
+					<div class = "sayingThings" id="messageTwo">
+						<span id="messagetwo">last question</span>
 					</div>
-					<div class = "sayingThings">
-						<span>fffuuuuuu</span>
+					<div class = "sayingThings" id="messageThree">
+						<span id="messagethree">fffuuuuuu -ragequit-</span>
 					</div>
 				</div>
 				<div class="button">
-					<div class = "buttonThings">
+					<div class = "buttonThings" onclick="messageParse('one')">
 						
 					</div>
-					<div class = "buttonThings">
+					<div class = "buttonThings" onclick="messageParse('two')">
 						
 					</div>
-					<div class = "buttonThings">
+					<div class = "buttonThings" onclick="messageParse('three')">
 						
 					</div>
 				</div>
 			</div>	
 			<textarea class="textfield" id="messageBox" wrap = "virtual"></textarea>
-			<div class="rightButton">
+			<div class="rightButton" onclick = "pubnubSend()">
 				<span>send</span>
 			</div>	
 		</div>
@@ -78,5 +81,8 @@
 	</body>
 <div pub-key="pub-d2c1ec0e-39c3-4acf-a6d5-2514dac5fa69" sub-key="sub-cd0c1fca-da71-11e1-a851-630e627b877d" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
 <script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
-<script src="scripts/clock.js"></script>	
+<script src="scripts/mobileClient.js"></script>
+
+	
 </html>
+

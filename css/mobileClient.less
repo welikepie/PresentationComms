@@ -27,10 +27,86 @@ font-family:Helvetica, Arial, sans-serif;
                     text-align:center;
                     }
                 .slider{
+                    position:relative;
                     float:left;
-                    background:green;
                     height:30px;
                     width:270px;
+                    .zero{
+                        left:0px;
+                        }
+                    .one{
+                        left:67px;
+                        }
+                    .two{
+                        left:135px;
+                        }
+                    .three{
+                        left:202px;
+                        }
+                    .timebars{
+                        position:absolute;
+                        .fifteens{
+                            position:absolute;
+                            background-color: #071e2d;
+                            width: 2px;
+                            height: 8px;
+                            z-index:55;
+                            left:65px;
+                            }
+                            .five{
+                                left:22px;
+                                }
+                            .ten{
+                                left:44px;
+                                }
+                            .fives{
+                                position:absolute;
+                                background-color: #072130;
+                                width: 2px;
+                                height: 6px;
+                                }
+                        }
+                        .ui-input-text{
+                            display:none;
+                            }
+                        .ui-slider{
+                            z-index:50;
+                            position: relative;
+                            display: inline-block;
+                            overflow: visible;
+                            height: 15px;
+                            padding: 0;
+                            margin-top:7px;
+                            width:270px;
+                            height: 16px;
+                            border-radius: 10px;
+                            background-color: #b2b2b2;
+                             .ui-slider-handle{
+                                 z-index:60;
+                                 background: #b2b2b2 -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
+                                background: #b2b2b2 -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.3)));
+                                background: #b2b2b2 -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.3) 100%);
+                                background: #b2b2b2 -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.3) 100%);
+                                background: #b2b2b2 -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.3) 100%);
+                                background: #b2b2b2 linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.3) 100%);
+                                    margin-top:-6px;
+                                    margin-left:-5px;
+                                    width: 10px;
+                                    height: 28px;
+                                    outline: 0;
+                                    display: block;
+                                    text-align: center;
+                                    cursor: pointer;
+                                    position: relative;
+                                    padding: 0;
+                                     border-radius:5px;
+                                     //dropshadow: 50%, vertical (90) distance: 2px, size: 2px, spread: 0px.
+                                     -webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.5); 
+                                    -moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.5); 
+                                    -o-box-shadow: 0px 2px 2px rgba(0,0,0,0.5);
+                                    box-shadow: 0px 2px 2px rgba(0,0,0,0.5);
+                                    }
+                            }
                     }
                 .menu{
                     width:270px;
@@ -39,6 +115,7 @@ font-family:Helvetica, Arial, sans-serif;
                     .leftButtons{
                         .pause{
                             span{
+                                cursor: pointer;
                                  text-shadow: 0px 3px 3px rgba(0,0,0,0.5);
                                 font-size: 18px;
                                 font-weight: medium;
@@ -53,6 +130,7 @@ font-family:Helvetica, Arial, sans-serif;
                             }
                         .reset{
                             span{
+                                cursor: pointer;
                                  text-shadow: 0px 3px 3px rgba(0,0,0,0.5);
                                 font-size: 18px;
                                 font-weight: medium;
@@ -67,20 +145,21 @@ font-family:Helvetica, Arial, sans-serif;
                             }
                         }
                     .start{
-                        background:  #c4c4c4 -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
+                        cursor: pointer;
+                    background:  #c4c4c4 -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
                     background:  #c4c4c4 -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.3)));
                     background:  #c4c4c4 -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.3) 100%);
                     background:  #c4c4c4 -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.3) 100%);
                     background:  #c4c4c4 -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.3) 100%);
                     background:  #c4c4c4 linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.3) 100%);
-                          float:left;
-                        margin-left:38px;
+                          float:right;
                         width: 100px;
                         height: 35px;
                         border-radius: 5px;
                         background-color: #c4c4c4;
                         color: #071e2d;
                         span{
+                            cursor: pointer;
                             margin-top:6px;
                             margin-left:25px;
                             text-align:center;
@@ -125,6 +204,7 @@ font-family:Helvetica, Arial, sans-serif;
                             width:25px;
                             float:left;
                                 .buttonThings{
+                                    cursor: pointer;
                                     margin-top:9px;
                                     float:left;
                                     width:27px;
@@ -138,6 +218,7 @@ font-family:Helvetica, Arial, sans-serif;
                             }    
                     }
                 .textfield{
+                    font-family:Helvetica, Arial, sans-serif;
                     resize:none;
                     color: #071e2d;
                     padding:20px;
@@ -155,6 +236,7 @@ font-family:Helvetica, Arial, sans-serif;
                             font-weight: medium; 
                     }
                 .rightButton{
+                    cursor: pointer;
                     float:right;
                     margin-top:10px;
                         width: 100px;
@@ -173,7 +255,9 @@ font-family:Helvetica, Arial, sans-serif;
                     -moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.3); 
                     -o-box-shadow: 0px 2px 2px rgba(0,0,0,0.3);
                     box-shadow: 0px 2px 2px rgba(0,0,0,0.3);
+                    
                         span{
+                            cursor: pointer;
                             margin-top:6px;
                             margin-left:25px;
                             text-align:center;
@@ -186,4 +270,13 @@ font-family:Helvetica, Arial, sans-serif;
                     }
             }
         }
+        .ui-page{
+            width:320px;
+            height:480px;
+            }
+        .ui-loader{
+            display:none;
+            width:0px;
+            height:0px;
+            }
     }
