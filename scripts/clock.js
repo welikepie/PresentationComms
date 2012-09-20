@@ -38,19 +38,20 @@ document.getElementById("container").style.backgroundColor = "rgb(" + oldRed + "
 if (window.WebSocket){
 	webSocketsOn();
 }
+else if (window.MozWebSocket) {
+		window.WebSocket = window.MozWebSocket;
+}
 else{
 	webSocketsOff();
 }
 function webSocketsOn() {
 	//document.getElementById('messagedisplay').innerHTML = "<textarea readonly rows = \"14\" cols = \"40\" id=\"messagebox\"></textarea>";
-	if (window.MozWebSocket) {
-		window.WebSocket = window.MozWebSocket;
-	}
+
 	//document.getElementById('messagebox').innerHTML = "Websockets enabled; connecting...";
 }
 
 function webSocketsOff() {
-	document.getElementById('messagedisplay').value = "NO WEBSOCKETS HERE!";
+	document.getElementById('messagedisplay').innerHTML = "NO WEBSOCKETS HERE!";
 }
 
 function startTimer(stringy) {
