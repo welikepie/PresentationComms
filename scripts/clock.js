@@ -1,6 +1,8 @@
 /**
  * @author AMRoche
  */
+var channelToConnect = "speaker";
+
 var remaintimemin;
 var remaintimesec;
 var settime = null;
@@ -23,10 +25,13 @@ var currentBlue = oldBlue;
 var currentGreen = oldGreen;
 var timeLimit = 0;
 var intervalId;
+var messageIntId;
 var paused = false;
 var minutes;
 var seconds;
-console.log(currentRed);
+var intervalSet = false;
+var displayTime = 5;
+////console.log(currentRed);
 document.getElementById("container").style.backgroundColor = "rgb(" + oldRed + "," + oldGreen + "," + oldBlue + ")";
 
 
@@ -49,26 +54,34 @@ function webSocketsOff() {
 }
 
 function startTimer(stringy) {
-	console.log(stringy);
+	//console.log(stringy);
 	stringTime = stringy.substr(6, 5);
 	settime = stringTime.split(":")[0];
 	document.getElementById('alarmtext').innerHTML = stringTime;
 	paused = false;
 	clockCounter();
+	if(intervalSet == false){
 	intervalId = setInterval('clockCounter()',1000);
+	intervalSet = true;
+	}
 }
 function pause(){
 	if(paused == false){
 		paused = true;
 		if(intervalId != null){
+			intervalSet = false;
 			clearInterval(intervalId);
 		}
 	}
 }
 
 function clockCounter() {
-	console.log("lol");
-	if(document.getElementById('alarmtext').innerHTML.substr(6,5) != "00:00"){
+paused == false;
+if(minutes=="00" && seconds=="00" || seconds <= 0 && minutes <= 0){
+			clearInterval(intervalId);
+		}
+		
+if(document.getElementById('alarmtext').innerHTML != "00:00"){
 		var split = document.getElementById('alarmtext').innerHTML.split(":");
 		minutes = parseInt(split[0]);
 		seconds = parseInt(split[1]);
@@ -82,7 +95,7 @@ function clockCounter() {
 			seconds == 1;
 		}
 
-		if(paused == false){
+		if(paused == false && minutes >= 0 && seconds >= 0){
 			seconds = seconds-1;
 		}		
 		if(minutes < 10 && minutes.length !=2){
@@ -95,30 +108,34 @@ function clockCounter() {
 		if(minutes == 0){
 			minutes = "00";
 		}		
-		console.log(minutes+":"+seconds);
+	//	//console.log(minutes+":"+seconds);
 		document.getElementById('alarmtext').innerHTML = minutes+":"+seconds;
 	}
-	backgroundChange();
+		backgroundChange();
+		
 //console.log(minutes+":"+seconds);
 }
 
 function messageWindow() {
 	if (document.getElementById('messageBox').className.indexOf("visShow") != -1) {
-		timeLimit++;
-		if (timeLimit == 7) {
+		timeLimit+=1;
+				console.log(timeLimit);
+		if (timeLimit == displayTime) {
 			document.getElementById('messageBox').className = "message visHide";
 			timeLimit = 0;
+	
 		}
-		if (settime == null || paused == true) {
-			window.setInterval("messageWindow()", 1000);
+		if (messageIntId == null) {
+			messageIntId = setInterval("messageWindow()", 1000);
 		}
 	}
 }
 
 function backgroundChange() {
-	messageWindow();
 	stepNum++;
-	var constantTime = parseInt(minutes) + parseInt(seconds) / 60;
+	var constantTime = 	minutes + seconds/60;
+	//console.log(constantTime);
+	//console.log(settime);
 	var redStepAmount;
 	var greenStepAmount;
 	var blueStepAmount;
@@ -129,37 +146,37 @@ function backgroundChange() {
 
 	//document.getElementById("container").style.backgroundColor = "rgb(100,200,150)";
 	//document.getElementById("container").style.backgroundColor = "rgb("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+")";
-	////console.log(document.getElementById("container").style.backgroundColor);
+	//////console.log(document.getElementById("container").style.backgroundColor);
 	if (constantTime > settime / 2) {
-		redStepAmount = (midRed - oldRed) / ((steps / 2));
-		greenStepAmount = (midGreen - oldGreen) / ((steps / 2));
-		blueStepAmount = (midBlue - oldBlue) / ((steps / 2));
+		redStepAmount = (midRed - oldRed) / (steps / 2);
+		greenStepAmount = (midGreen - oldGreen) / (steps / 2);
+		blueStepAmount = (midBlue - oldBlue) / (steps / 2);
 		currentRed += redStepAmount;
-		currentGreen += Math.floor(greenStepAmount);
-		currentBlue += Math.floor(blueStepAmount);
+		currentGreen += greenStepAmount;
+		currentBlue += blueStepAmount;
 		document.getElementById("container").style.backgroundColor = "rgb(" + Math.floor(currentRed) + "," + Math.floor(currentGreen) + "," + Math.floor(currentBlue) + ")";
 	}
-	if (constantTime == settime / 2) {
+	if (constantTime == settime / 2 && constantTime != 0) {
 		//console.log("YYEAAAH");
 		currentRed = midRed;
-		//console.log(currentRed);
+		////console.log(currentRed);
 		currentBlue = midBlue;
 		currentGreen = midGreen;
 		document.getElementById("container").style.backgroundColor = "rgb(" + currentRed + "," + currentGreen + "," + currentBlue + ")";
 	}
 	if (constantTime < settime / 2 && constantTime > 0) {
-		//console.log(steps - (steps/2));
+		////console.log(steps - (steps/2));
 		redStepAmount = (newRed - midRed) / (steps / 2);
 		greenStepAmount = (newGreen - midGreen) / (steps / 2);
 		blueStepAmount = (newBlue - midBlue) / (steps / 2);
-		//console.log(currentRed);
-		//console.log(redStepAmount);
+		////console.log(currentRed);
+		////console.log(redStepAmount);
 		currentRed += redStepAmount;
 		currentGreen += greenStepAmount;
 		currentBlue += blueStepAmount;
-		////console.log(currentRed);
+		//////console.log(currentRed);
 		document.getElementById("container").style.backgroundColor = "rgb(" + Math.floor(currentRed) + "," + Math.floor(currentGreen) + "," + Math.floor(currentBlue) + ")";
-		//console.log("post-change"+currentRed);
+		////console.log("post-change"+currentRed);
 	}
 
 }
@@ -168,7 +185,7 @@ function backgroundChange() {
 
 	// LISTEN FOR MESSAGES
 	PUBNUB.subscribe({
-		channel : "speaker", // CONNECT TO THIS CHANNEL.
+		channel : channelToConnect, // CONNECT TO THIS CHANNEL.
 
 		restore : false, // STAY CONNECTED, EVEN WHEN BROWSER IS CLOSED
 		// OR WHEN PAGE CHANGES.
@@ -178,19 +195,20 @@ function backgroundChange() {
 			if (message.indexOf("|time|") == -1 && message.indexOf("|pause|") == -1) {
 				document.getElementById("messageBox").innerHTML = "<div id='messageContainer'><p>" + message + "</div></p>";
 				document.getElementById("messageBox").className = "message visShow";
-				if (settime == null) {
 					timeLimit = 0;
 					messageWindow();
-				}
 			}
 						
 			if (message.indexOf("|pause|") != -1) {
+				//console.log(message);
 				pause();
 			}
 
 
 			if (message.indexOf("|time|") != -1) {
-				console.log("MESSAGE BITCHES:"+message);
+				currentRed = oldRed;
+				currentBlue = oldBlue;
+				currentGreen = oldGreen;
 				settime = parseInt(message.substr(6,5).split(":")[0]);
 				steps = settime*60;
 				document.getElementById('messageBox').className = "message visHide";
@@ -224,11 +242,6 @@ function backgroundChange() {
 				timeLimit = 0;
 				messageWindow();
 			}
-
-			//PUBNUB.publish({
-			//channel: "speaker",
-			//message: "Time:1"
-			//})
 
 		}
 	})

@@ -4,6 +4,12 @@ var started = false;
 var minutes;
 var seconds;
 var intervalId = null;
+var channelToConnect = "speaker";
+
+document.getElementById("pause").addEventListener('click', pauseMe);
+document.getElementById("start").addEventListener('click', start);
+document.getElementById("reset").addEventListener('click', reset);
+
 function messageParse(stringy){
 	var IDtoFetch = "message"+stringy;
 	document.getElementById('messageBox').value = document.getElementById(IDtoFetch).innerHTML;
@@ -14,15 +20,24 @@ function pauseMe(){
 	if(intervalId!=null){
 		clearInterval(intervalId);
 		PUBNUB.publish({             // SEND A MESSAGE.
-                channel : "speaker",
+                channel : channelToConnect,
                 message : "|pause|"
             	})
 	}
 		
 }
 
+function pauseMeSneakily(){
+	pause = true;
+	started = false;
+	if(intervalId!=null){
+		clearInterval(intervalId);
+	}
+		
+}
+
 function reset(){
-	pauseMe();
+	pauseMeSneakily();
 	document.getElementById('timeywimey').innerHTML = "<span>00:00</span>";
 }
 
@@ -31,7 +46,7 @@ function start(){
 	if(started == false){
 		started = true;
 		PUBNUB.publish({             // SEND A MESSAGE.
-                channel : "speaker",
+                channel : channelToConnect,
                 message : "|time|"+document.getElementById('timeywimey').innerHTML.substr(6,5)
             	})
 		countDown();
@@ -77,16 +92,15 @@ function countDown(){
 function pubnubSend(){
 	if (document.getElementById('messageBox').value != "" || document.getElementById('messageBox').value != null)
 		{	PUBNUB.publish({             // SEND A MESSAGE.
-                channel : "speaker",
+                channel : channelToConnect,
                 message : document.getElementById('messageBox').value
             	})
             }
 	document.getElementById('messageBox').value = "";
-				
 }
 //------done functions under here.
 function updateStuff(){
-	pauseMe();
+	pauseMeSneakily();
 	minuteThings = document.getElementById('timeSetting').value;
 	if(minuteThings < 10){
 		minuteThings = "0"+minuteThings;
@@ -99,7 +113,7 @@ function updateStuff(){
  
     // LISTEN FOR MESSAGES
     PUBNUB.subscribe({
-        channel    : currentMode,      // CONNECT TO THIS CHANNEL.
+        channel    : channelToConnect,      // CONNECT TO THIS CHANNEL.
  
         restore    : false,              // STAY CONNECTED, EVEN WHEN BROWSER IS CLOSED
                                          // OR WHEN PAGE CHANGES.

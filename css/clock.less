@@ -1,7 +1,7 @@
 body{
 margin:0px;
 .visHide{
-      opacity:0;
+                opacity:0;
       width:0px;
       height:0px;
    -webkit-transition: opacity 0.5s;
@@ -10,7 +10,6 @@ margin:0px;
        -o-transition: opacity 0.5s ;
           transition: opacity 0.5s ;
     }
-    
 .visShow{
       opacity:1;
    -webkit-transition: opacity 0.5s;
@@ -34,9 +33,10 @@ font-smooth:always;
     width: 1024px;
     height: 768px;
   //      background-color:#680027;
-    .message{
+   .message{
+          width: 1024px;
+        height: 768px;
         #messageContainer{
-            width:824px;
             margin:50px auto 50px auto;
                 p{
                     font-family: Helvetica, Arial, sans-serif;
@@ -51,16 +51,15 @@ font-smooth:always;
         z-index:999;
         background-color:white;
         position:absolute;
-        top:50px;
-        left:50px;
-        width: 924px;
-        height: 668px;
+        top:0px;
+        left:0px;
         }
     .alarmdisplay{
         float:left;
         width:100%;
         text-align:center;
             #alarmtext{
+                font-smooth:always;
                 display:block;
                 font-family: Helvetica, Arial, sans-serif;
                  margin: 159px auto 0px auto;
@@ -69,7 +68,7 @@ font-smooth:always;
                 line-height:315px;
                 font-weight: bold;
                 color: #cbcbcb;
-                text-shadow: 0px 7px 7px rgba(0,0,0,0.5);
+                text-shadow: 0px 7px 7px rgba(0,0,0,0.4);
             }
         margin: 0px auto;
         }
@@ -90,7 +89,7 @@ font-smooth:always;
             font-size: 30px;
             text-align:center;
             color: #c9c9c9;
-             text-shadow: 0px 5px 5px rgba(0,0,0,0.5);
+             text-shadow: 0px 3px 3px rgba(0,0,0,0.5);
         }
         width:200px;
         float:left;
@@ -108,13 +107,7 @@ font-smooth:always;
             //clear:both;
             float:left;
         background-image: url('ProgressBar.png');
-            //    background: -moz-linear-gradient(left,  #8e4d13 0%,#680027 50%, #115c82 100%);
-            //    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #8e4d13), color-stop(50%, #680027), color-stop(100%,#115c82));
-            //    background: -webkit-linear-gradient(left, #8e4d13 0%,#680027 50%, #115c82 100%);
-            //    background: -o-linear-gradient(left, #8e4d13 0%,#680027 50%, #115c82 100%);
-            //    background: -ms-linear-gradient(left,  #8e4d13 0%,#680027 50%, #115c82 100%);
-             //   background:  linear-gradient(left,  #8e4d13 0%,#680027 50%,#115c82 100%);
-            border-radius: 30px;
+                 border-radius: 30px;
             }
         }
     }   
