@@ -5,6 +5,8 @@ var minutes;
 var seconds;
 var intervalId = null;
 var channelToConnect = "speaker";
+//var channelToConnect = prompt("Specify Channel to broadcast to. Case sensitive.", "");
+// ^ uncomment this to define which channel to connect this to.
 
 document.getElementById("pause").addEventListener('click', pauseMe);
 document.getElementById("start").addEventListener('click', start);

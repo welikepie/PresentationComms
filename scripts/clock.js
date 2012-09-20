@@ -2,11 +2,11 @@
  * @author AMRoche
  */
 var channelToConnect = "speaker";
-
+//var channelToConnect = prompt("Specify Channel to listen to. Case sensitive.", "");
+// ^ uncomment this to define which channel to connect this to.
 var remaintimemin;
 var remaintimesec;
 var settime = null;
-//var settime = prompt("Specify Time to run for in minutes.", "");
 var connection;
 var finished = false;
 var oldRed = 142;
