@@ -2,6 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		
 		<LINK href="css/clock.css" rel="stylesheet" type="text/css">
 		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
 		Remove this if you use the .htaccess -->
@@ -10,18 +11,22 @@
 		<title>clock</title>
 		<meta name="description" content="" />
 		<meta name="author" content="AMRoche" />
-
-		<meta name="viewport" content="wclassth=device-wclassth; initial-scale=1.0" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 	</head>
-
 	<body>
+		<!-- transition to background colour and display message.-->
+		<!-- trick CSS in to using hardware acceleration (3D transform to trick)-->
 			<div id= "container">
 			<!--	<h1>Clock</h1> -->
 				<div class="message visHide" id="messageBox"></div>
+				<div class="dissipate" id="frontBlast"></div>
 				<div class="alarmdisplay">
 					<span id="alarmtext">00:00</span>
 				</div>
@@ -39,5 +44,6 @@
 	</body>
 <div pub-key="pub-d2c1ec0e-39c3-4acf-a6d5-2514dac5fa69" sub-key="sub-cd0c1fca-da71-11e1-a851-630e627b877d" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
 <script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
+<script src="scripts/jqueryCore1-7-1.js"></script>
 <script src="scripts/clock.js"></script>	
 </html>

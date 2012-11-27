@@ -1,30 +1,62 @@
+html{
+       -webkit-transition: rotateX(0deg); 
+     -moz-transition: rotateX(0deg);
+      -ms-transition: rotateX(0deg);
+       -o-transition: rotateX(0deg);
+          transition: rotateX(0deg);
+    height:768px;
+    }
 body{
 margin:0px;
+
 .visHide{
-                opacity:0;
-      width:0px;
-      height:0px;
-   -webkit-transition: opacity 0.5s;
-     -moz-transition: opacity 0.5s ;
-      -ms-transition: opacity 0.5s ;
-       -o-transition: opacity 0.5s ;
-          transition: opacity 0.5s ;
+    opacity:0;
+     -webkit-transition: opacity 0.4s;
+     -moz-transition: opacity 0.4s;
+      -ms-transition: opacity 0.4s;
+       -o-transition: opacity 0.4s ;
+          transition: opacity 0.4s;
     }
 .visShow{
-      opacity:1;
-   -webkit-transition: opacity 0.5s;
-     -moz-transition: opacity 0.5s ;
-      -ms-transition: opacity 0.5s ;
-       -o-transition: opacity 0.5s ;
-          transition: opacity 0.5s ;
+opacity:1;
+//background:#FFFFFF;
+   -webkit-transition: opacity 0.4s;
+     -moz-transition: opacity 0.4s;
+      -ms-transition: opacity 0.4s;
+       -o-transition: opacity 0.4s ;
+          transition: opacity 0.4s;
     }
 .hidden{
     opacity:0;
     width:0px;
     height:0px;
     display:none;
-    
     }
+.blast{
+    opacity:1;
+   -webkit-transition: opacity 0.15s;
+     -moz-transition: opacity 0.15s;
+      -ms-transition: opacity 0.15s;
+       -o-transition: opacity 0.15s ;
+          transition: opacity 0.15s;
+    }
+.dissipate{
+    opacity:0;
+    -webkit-transition: opacity 1.5s;
+     -moz-transition: opacity 1.5s;
+      -ms-transition: opacity 1.5s;
+       -o-transition: opacity 1.5s ;
+          transition: opacity 1.5s;
+}
+
+.fastDissipate{
+    opacity:0;
+    -webkit-transition: opacity 0.15s;
+     -moz-transition: opacity 0.15s;
+      -ms-transition: opacity 0.15s;
+       -o-transition: opacity 0.15s ;
+          transition: opacity 0.15s;
+}
 font-smooth:always;
 #container{
     background-image:url('BackgroundTexture.png');
@@ -33,19 +65,30 @@ font-smooth:always;
     width: 1024px;
     height: 768px;
   //      background-color:#680027;
+  #frontBlast{
+      z-index:9000;
+      position:absolute;
+      width:1024px;
+      height:768px;
+      background:#FFFFFF;
+      }
    .message{
-          width: 1024px;
+         width: 1024px;
         height: 768px;
         #messageContainer{
-            margin:50px auto 50px auto;
+            height:768px;
+            background-image:url('BackgroundTexture.png');
+            margin:0px auto 50px auto;
                 p{
                     font-family: Helvetica, Arial, sans-serif;
-                    font-size: 100px;
+                    font-weight:bold;
+                    font-size: 175px;
                     text-align:center;
+                    color: #C6C6C6;
                     text-shadow: 0px 2px 3px rgba(0,0,0,0.5);
-                    text-overflow:ellipsis;
+                    text-overflow:hidden;
                 }
-                text-overflow:ellipsis;
+                text-overflow:hidden;
             overflow:hidden;
             }
         z-index:999;
@@ -53,6 +96,7 @@ font-smooth:always;
         position:absolute;
         top:0px;
         left:0px;
+        text-overflow:hidden;
         }
     .alarmdisplay{
         float:left;
@@ -66,7 +110,7 @@ font-smooth:always;
                 text-align:center;
                 font-size: 315px;
                 line-height:315px;
-                font-weight: bold;
+                font-weight:bold;
                 color: #cbcbcb;
                 text-shadow: 0px 7px 7px rgba(0,0,0,0.4);
             }

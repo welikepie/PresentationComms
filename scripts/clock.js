@@ -1,6 +1,7 @@
 /**
  * @author AMRoche
  */
+
 var channelToConnect = "speaker";
 //var channelToConnect = prompt("Specify Channel to listen to. Case sensitive.", "");
 // ^ uncomment this to define which channel to connect this to.
@@ -30,24 +31,19 @@ var paused = false;
 var minutes;
 var seconds;
 var intervalSet = false;
-var displayTime = 5;
+var displayTime = 5000;
 //////console.log(currentRed);
 document.getElementById("container").style.backgroundColor = "rgb(" + oldRed + "," + oldGreen + "," + oldBlue + ")";
-
-
-if (window.WebSocket){
-	webSocketsOn();
+if (document.getElementById("messageBox").className.indexOf("visShow") != 0) {
+	document.getElementById("messageBox").style.backgroundColor = document.getElementById("container").style.backgroundColor
 }
-else if (window.MozWebSocket) {
-		window.WebSocket = window.MozWebSocket;
-}
-else{
+
+if (window.WebSocket) {
+	//webSocketsOn();
+} else if (window.MozWebSocket) {
+	window.WebSocket = window.MozWebSocket;
+} else {
 	webSocketsOff();
-}
-function webSocketsOn() {
-	//document.getElementById('messagedisplay').innerHTML = "<textarea readonly rows = \"14\" cols = \"40\" id=\"messagebox\"></textarea>";
-
-	//document.getElementById('messagebox').innerHTML = "Websockets enabled; connecting...";
 }
 
 function webSocketsOff() {
@@ -61,15 +57,16 @@ function startTimer(stringy) {
 	document.getElementById('alarmtext').innerHTML = stringTime;
 	paused = false;
 	clockCounter();
-	if(intervalSet == false){
-	intervalId = setInterval('clockCounter()',1000);
-	intervalSet = true;
+	if (intervalSet == false) {
+		intervalId = setInterval('clockCounter()', 1000);
+		intervalSet = true;
 	}
 }
-function pause(){
-	if(paused == false){
+
+function pause() {
+	if (paused == false) {
 		paused = true;
-		if(intervalId != null){
+		if (intervalId != null) {
 			intervalSet = false;
 			clearInterval(intervalId);
 		}
@@ -77,67 +74,92 @@ function pause(){
 }
 
 function clockCounter() {
-paused == false;
-if(minutes=="00" && seconds=="00" || seconds <= 0 && minutes <= 0){
-			clearInterval(intervalId);
-		}
-		
-if(document.getElementById('alarmtext').innerHTML != "00:00"){
-		var split = document.getElementById('alarmtext').innerHTML.split(":");
-		minutes = parseInt(split[0]);
-		seconds = parseInt(split[1]);
+	paused == false;
+	if (minutes == "00" && seconds == "00" || seconds <= 0 && minutes <= 0) {
+		clearInterval(intervalId);
+	}
 
-		if(seconds == 0){
+	if (document.getElementById('alarmtext').innerHTML != "00:00") {
+		//console.log(document.getElementById('alarmtext').innerHTML);
+		var split = document.getElementById('alarmtext').innerHTML.split(":");
+		console.log(split);
+		minutes = Number(split[0]);
+		seconds = Number(split[1]);
+		console.log(minutes + ":" + seconds);
+
+		if (seconds == 0) {
 			minutes -= 1;
 			seconds += 60;
+			//console.log("seconds are zero");
 		}
-		if(minutes == 0 && seconds == 0){
+		if (minutes == 0 && seconds == 0) {
 			minutes == 0;
 			seconds == 1;
+			//console.log("end of count");
 		}
 
-		if(paused == false && minutes >= 0 && seconds >= 0){
-			seconds = seconds-1;
-		}		
-		if(minutes < 10 && minutes.length !=2){
-			minutes = "0"+minutes;
+		if (paused == false && minutes >= 0 && seconds >= 0) {
+			seconds = seconds - 1;
+			//console.log("counted" + seconds);
 		}
-		if(seconds < 10 && seconds.length !=2){
-			seconds = "0"+seconds;
+		if (minutes < 10 && minutes.length != 2) {
+			minutes = "0" + minutes;
+			//console.log("minutes less than ten");
 		}
-		
-		if(minutes == 0){
+		if (seconds < 10 && seconds.length != 2) {
+			seconds = "0" + seconds;
+			console.log("seconds less than ten");
+			console.log(seconds);
+		}
+
+		if (minutes == 0) {
 			minutes = "00";
-		}		
-	//	////console.log(minutes+":"+seconds);
-		document.getElementById('alarmtext').innerHTML = minutes+":"+seconds;
+			//console.log("minutes be zero");
+		}
+		//console.log("being parsed:"+minutes+":"+seconds);
+		document.getElementById('alarmtext').innerHTML = minutes + ":" + seconds;
 	}
-		backgroundChange();
-		
-////console.log(minutes+":"+seconds);
+	backgroundChange();
+
+	////console.log(minutes+":"+seconds);
 }
 
 function messageWindow() {
-	if (document.getElementById('messageBox').className.indexOf("visShow") != -1) {
-		timeLimit+=1;
-				//console.log(timeLimit);
-		if (timeLimit == displayTime) {
-			document.getElementById('messageBox').className = "message visHide";
-			timeLimit = 0;
-	
-		}
-		if (messageIntId == null) {
-			messageIntId = setInterval("messageWindow()", 1000);
-		}
-	}
+	//150 fadein -> 350 fadeout
+	//250 on fade in, flash on fade out
+	//if (document.getElementById('messageBox').className.indexOf("visShow") != -1) {
+
+	$("#frontBlast").queue(function(next) {
+		$(this).attr('class', 'blast');
+		next();
+	})
+		.delay(150+250) //time of in animation + time you want white for
+	.queue(function(next) {
+		$(this).attr('class', 'dissipate');
+		next();
+	})
+		.delay(displayTime-400)
+	.queue(function(next) {
+		$(this).attr('class', 'blast');
+		next();
+	})
+		.delay(150) //delaying time of animation
+	.queue(function(next) { $(this).attr('class','fastDissipate'); next();});
+
+
+	$("#messageBox").delay(displayTime).queue(function(next) {
+		$(this).attr('class', 'message visHide');
+		next();
+	});
 }
 
 function backgroundChange() {
 	stepNum++;
-	var constantTime = 	minutes + seconds/60;
+	var constantTime = minutes + seconds / 60;
 	////console.log(constantTime);
 	////console.log(settime);
-	var redStepAmount;
+	var
+	redStepAmount;
 	var greenStepAmount;
 	var blueStepAmount;
 	if (constantTime == null) {
@@ -183,7 +205,6 @@ function backgroundChange() {
 }
 
 (function() {
-
 	// LISTEN FOR MESSAGES
 	PUBNUB.subscribe({
 		channel : channelToConnect, // CONNECT TO THIS CHANNEL.
@@ -196,22 +217,21 @@ function backgroundChange() {
 			if (message.indexOf("|time|") == -1 && message.indexOf("|pause|") == -1) {
 				document.getElementById("messageBox").innerHTML = "<div id='messageContainer'><p>" + message + "</div></p>";
 				document.getElementById("messageBox").className = "message visShow";
-					timeLimit = 0;
-					messageWindow();
+				timeLimit = 0;
+				messageWindow();
 			}
-						
+
 			if (message.indexOf("|pause|") != -1) {
 				////console.log(message);
 				pause();
 			}
-
 
 			if (message.indexOf("|time|") != -1) {
 				currentRed = oldRed;
 				currentBlue = oldBlue;
 				currentGreen = oldGreen;
 				settime = parseInt(message.substr(6,5).split(":")[0]);
-				steps = settime*60;
+				steps = settime * 60;
 				document.getElementById('messageBox').className = "message visHide";
 				startTimer(message);
 			}

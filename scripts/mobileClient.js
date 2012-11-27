@@ -14,7 +14,11 @@ document.getElementById("reset").addEventListener('click', reset);
 
 function messageParse(stringy){
 	var IDtoFetch = "message"+stringy;
-	document.getElementById('messageBox').value = document.getElementById(IDtoFetch).innerHTML;
+			{	PUBNUB.publish({             // SEND A MESSAGE.
+                channel : channelToConnect,
+                message : document.getElementById(IDtoFetch).innerHTML
+            	})
+            }
 }
 function pauseMe(){
 	pause = true;
