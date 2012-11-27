@@ -34,9 +34,6 @@ var intervalSet = false;
 var displayTime = 5000;
 //////console.log(currentRed);
 document.getElementById("container").style.backgroundColor = "rgb(" + oldRed + "," + oldGreen + "," + oldBlue + ")";
-if (document.getElementById("messageBox").className.indexOf("visShow") != 0) {
-	document.getElementById("messageBox").style.backgroundColor = document.getElementById("container").style.backgroundColor
-}
 
 if (window.WebSocket) {
 	//webSocketsOn();
@@ -125,10 +122,13 @@ function clockCounter() {
 }
 
 function messageWindow() {
+		document.getElementById("messageBox").style.backgroundColor = document.getElementById("container").style.backgroundColor;
 	//150 fadein -> 350 fadeout
 	//250 on fade in, flash on fade out
 	//if (document.getElementById('messageBox').className.indexOf("visShow") != -1) {
-
+	$("#frontBlast").clearQueue();
+	$("#messageBox").clearQueue();
+	
 	$("#frontBlast").queue(function(next) {
 		$(this).attr('class', 'blast');
 		next();

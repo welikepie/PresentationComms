@@ -6044,6 +6044,7 @@ $.widget( "mobile.slider", $.mobile.widget, {
 		domSlider.setAttribute('role','application');
 		domSlider.className = ['ui-slider ',selectClass," ui-btn-down-",trackTheme,' ui-btn-corner-all', inlineClass, miniClass].join("");
 		domHandle.className = 'ui-slider-handle';
+		//domHandle.innerHTML = "<span id = 'handleThing'></span>";
 		var html = ''
 +'<div class="timebars zero"><div class="fives five"></div><div class="fives ten"></div><div class="fifteens"></div></div>'
 +'<div class="timebars one"><div class="fives five"></div><div class="fives ten"></div><div class="fifteens"></div></div>'

@@ -7,85 +7,86 @@
 		Remove this if you use the .htaccess -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-		<title>clock</title>
+		<title>Mobile Client</title>
 		<meta name="description" content="" />
 		<meta name="author" content="AMRoche" />
 
-		        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=no">
 
 		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-		  <script src="scripts/jqueryCore1-7-1.js"></script>
-  <script src="scripts/jqueryMobile1-1.js"></script>
+		<script src="scripts/jqueryCore1-7-1.js"></script>
+		<script src="scripts/jqueryMobile1-1.js"></script>
 	</head>
 	<body>
 		<div class="container">
 			<div class="containeything">
-			<div class="timetop" id="timeywimey">
-			<span>00:00</span>
-			</div>
-			<div class="slider" data-role="content" id="sliderThing">
-
-			<input type=range min=0 max=60 id="timeSetting" onchange="updateStuff()"/>
-			</div>
-			<div class="menu">
-				<div class="leftButtons">
-					<div class="pause" id="pause">
-						<span onclick="pauseMe()">pause</span>
-					</div>
-					<div class="reset" id="reset">
-						<span>reset</span>
-					</div>
+				<div class="timetop" id="timeywimey">
+					<span>00:00</span>
 				</div>
-				<div class="start" id="start">
+				<div class="slider" data-role="content" id="sliderThing">
+
+					<input type=range min=0 max=60 id="timeSetting" onchange="updateStuff()"/>
+				</div>
+				<div class="menu">
+					<div class="leftButtons">
+						<div class="pause" id="pause">
+							<span onclick="pauseMe()">pause</span>
+						</div>
+						<div class="reset" id="reset">
+							<span>reset</span>
+						</div>
+					</div>
+					<div class="start" id="start">
 						<span>start</span>
+					</div>
+				</div>
+				<div class="sayings">
+					<!--//onclick messageParse('one')-->
+					<div class = "rowOrder" onclick="messageParse('one')">
+						<div class = "things sayingThings" id="messageOne">
+							<span id="messageone">Last Question</span>
+						</div>
+						<div class = "button buttonThings" ></div>
+					</div>
+					
+					<div class = "rowOrder" onclick="messageParse('two')">
+						<div class = "things sayingThings" id="messageTwo">
+							<span id="messagetwo">5 Minutes Left</span>
+						</div>
+						<div class = "button buttonThings">
+
+						</div>
+					</div>
+					<div class = "rowOrder" onclick="messageParse('three')">
+						<div class = "things sayingThings" id="messageThree">
+							<span id="messagethree">Get off the Stage</span>
+						</div>
+						<div class = "button buttonThings">
+						</div>
+					</div>
+
+				</div>
+				<textarea class="textfield" id="messageBox" wrap = "virtual"></textarea>
+				<div class="rightButton" onclick = "pubnubSend()">
+					<span>send</span>
 				</div>
 			</div>
-			<div class="sayings">
-				<div class="things">
-					<div class = "sayingThings" id="messageOne">
-						<span id="messageone">shut the fuck up</span>
-					</div>
-					<div class = "sayingThings" id="messageTwo">
-						<span id="messagetwo">last question</span>
-					</div>
-					<div class = "sayingThings" id="messageThree">
-						<span id="messagethree">fffuuuuuu -ragequit-</span>
-					</div>
-				</div>
-				<div class="button">
-					<div class = "buttonThings" onclick="messageParse('one')">
-						
-					</div>
-					<div class = "buttonThings" onclick="messageParse('two')">
-						
-					</div>
-					<div class = "buttonThings" onclick="messageParse('three')">
-						
-					</div>
-				</div>
-			</div>	
-			<textarea class="textfield" id="messageBox" wrap = "virtual"></textarea>
-			<div class="rightButton" onclick = "pubnubSend()">
-				<span>send</span>
-			</div>	
 		</div>
-	</div>
 	</body>
-			<footer>
-				<p>
-					<!--&copy; WeLikePie -->
-				</p>
-			</footer>
+	<footer>
+		<p>
+			<!--&copy; WeLikePie -->
+		</p>
+	</footer>
 	</body>
-<div pub-key="pub-d2c1ec0e-39c3-4acf-a6d5-2514dac5fa69" sub-key="sub-cd0c1fca-da71-11e1-a851-630e627b877d" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
-<script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
-<script src="scripts/mobileClient.js"></script>
+	<div pub-key="pub-d2c1ec0e-39c3-4acf-a6d5-2514dac5fa69" sub-key="sub-cd0c1fca-da71-11e1-a851-630e627b877d" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
+	<script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
+	<script src="scripts/mobileClient.js"></script>
 
-	
 </html>
 
