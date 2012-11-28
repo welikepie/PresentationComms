@@ -1,5 +1,6 @@
 var connection;
 var sendButton = document.getElementById('send');
+var channelSet = "speaker";
 
 window.onload = function() {
 	if (sendButton.addEventListener) {
@@ -15,7 +16,7 @@ window.onload = function() {
 
 function sendMessage() {
 	PUBNUB.publish({             // SEND A MESSAGE.
-                channel : "speaker",
+                channel : channelSet,
                 message : document.getElementById('sendbox').value
             })
             document.getElementById('sendbox').value = null;
@@ -43,7 +44,7 @@ function webSocketsOff() {
  
     // LISTEN FOR MESSAGES
     PUBNUB.subscribe({
-        channel    : "speaker",      // CONNECT TO THIS CHANNEL.
+        channel    : channel,      // CONNECT TO THIS CHANNEL.
  
         restore    : false,              // STAY CONNECTED, EVEN WHEN BROWSER IS CLOSED
                                          // OR WHEN PAGE CHANGES.
@@ -67,7 +68,7 @@ function webSocketsOff() {
         connect    : function() {        // CONNECTION ESTABLISHED.
  
             PUBNUB.publish({             // SEND A MESSAGE.
-                channel : "speaker",
+                channel : channelSet,
                 message : "We have connection."
             })
  

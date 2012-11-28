@@ -8,7 +8,7 @@ html{
     }
 body{
 margin:0px;
-
+    background-image:url('BackgroundTexture.png');
 .visHide{
     opacity:0;
      -webkit-transition: opacity 0.4s;
@@ -57,22 +57,23 @@ opacity:1;
        -o-transition: opacity 0.15s ;
           transition: opacity 0.15s;
 }
+
 font-smooth:always;
-#container{
-    background-image:url('BackgroundTexture.png');
-    position:relative;
-    float:left;
-    width: 1024px;
-    height: 768px;
-  //      background-color:#680027;
   #frontBlast{
       z-index:9000;
       position:absolute;
-      width:1024px;
+      width:100%;
       height:768px;
       background:#FFFFFF;
       }
+#container{
+    margin-left:auto;
+    margin-right:auto;
+    width: 1024px;
+    height: 768px;
+  //      background-color:#680027;
    .message{
+       margin:0px auto 0px auto;
          width: 1024px;
         height: 768px;
         #messageContainer{
@@ -94,8 +95,6 @@ font-smooth:always;
         z-index:999;
         background-color:white;
         position:absolute;
-        top:0px;
-        left:0px;
         text-overflow:hidden;
         }
     .alarmdisplay{

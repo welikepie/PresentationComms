@@ -20,13 +20,13 @@
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 	</head>
-	<body>
+	<body id="background">
 		<!-- transition to background colour and display message.-->
 		<!-- trick CSS in to using hardware acceleration (3D transform to trick)-->
+			<div class="dissipate" id="frontBlast"></div>
 			<div id= "container">
 			<!--	<h1>Clock</h1> -->
 				<div class="message visHide" id="messageBox"></div>
-				<div class="dissipate" id="frontBlast"></div>
 				<div class="alarmdisplay">
 					<span id="alarmtext">00:00</span>
 				</div>

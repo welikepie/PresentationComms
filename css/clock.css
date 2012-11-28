@@ -1,13 +1,13 @@
 /* CSS crunched with Crunch - http://crunchapp.net/ */
 html{-webkit-transition:rotatex(0deg);-moz-transition:rotatex(0deg);-ms-transition:rotatex(0deg);-o-transition:rotatex(0deg);transition:rotatex(0deg);height:768px;}
-body{margin:0px;font-smooth:always;}body .visHide{opacity:0;-webkit-transition:opacity 0.4s;-moz-transition:opacity 0.4s;-ms-transition:opacity 0.4s;-o-transition:opacity 0.4s ;transition:opacity 0.4s;}
+body{margin:0px;background-image:url('BackgroundTexture.png');font-smooth:always;}body .visHide{opacity:0;-webkit-transition:opacity 0.4s;-moz-transition:opacity 0.4s;-ms-transition:opacity 0.4s;-o-transition:opacity 0.4s ;transition:opacity 0.4s;}
 body .visShow{opacity:1;-webkit-transition:opacity 0.4s;-moz-transition:opacity 0.4s;-ms-transition:opacity 0.4s;-o-transition:opacity 0.4s ;transition:opacity 0.4s;}
 body .hidden{opacity:0;width:0px;height:0px;display:none;}
 body .blast{opacity:1;-webkit-transition:opacity 0.15s;-moz-transition:opacity 0.15s;-ms-transition:opacity 0.15s;-o-transition:opacity 0.15s ;transition:opacity 0.15s;}
 body .dissipate{opacity:0;-webkit-transition:opacity 1.5s;-moz-transition:opacity 1.5s;-ms-transition:opacity 1.5s;-o-transition:opacity 1.5s ;transition:opacity 1.5s;}
 body .fastDissipate{opacity:0;-webkit-transition:opacity 0.15s;-moz-transition:opacity 0.15s;-ms-transition:opacity 0.15s;-o-transition:opacity 0.15s ;transition:opacity 0.15s;}
-body #container{background-image:url('BackgroundTexture.png');position:relative;float:left;width:1024px;height:768px;}body #container #frontBlast{z-index:9000;position:absolute;width:1024px;height:768px;background:#FFFFFF;}
-body #container .message{width:1024px;height:768px;z-index:999;background-color:white;position:absolute;top:0px;left:0px;text-overflow:hidden;}body #container .message #messageContainer{height:768px;background-image:url('BackgroundTexture.png');margin:0px auto 50px auto;text-overflow:hidden;overflow:hidden;}body #container .message #messageContainer p{font-family:Helvetica,Arial,sans-serif;font-weight:bold;font-size:175px;text-align:center;color:#C6C6C6;text-shadow:0px 2px 3px rgba(0, 0, 0, 0.5);text-overflow:hidden;}
+body #frontBlast{z-index:9000;position:absolute;width:100%;height:768px;background:#FFFFFF;}
+body #container{margin-left:auto;margin-right:auto;width:1024px;height:768px;}body #container .message{margin:0px auto 0px auto;width:1024px;height:768px;z-index:999;background-color:white;position:absolute;text-overflow:hidden;}body #container .message #messageContainer{height:768px;background-image:url('BackgroundTexture.png');margin:0px auto 50px auto;text-overflow:hidden;overflow:hidden;}body #container .message #messageContainer p{font-family:Helvetica,Arial,sans-serif;font-weight:bold;font-size:175px;text-align:center;color:#C6C6C6;text-shadow:0px 2px 3px rgba(0, 0, 0, 0.5);text-overflow:hidden;}
 body #container .alarmdisplay{float:left;width:100%;text-align:center;margin:0px auto;}body #container .alarmdisplay #alarmtext{font-smooth:always;display:block;font-family:Helvetica,Arial,sans-serif;margin:159px auto 0px auto;text-align:center;font-size:315px;line-height:315px;font-weight:bold;color:#cbcbcb;text-shadow:0px 7px 7px rgba(0, 0, 0, 0.4);}
 body #container .minutesLabel{padding-left:187px;padding-right:124px;}
 body #container .secondsLabel{padding-right:187px;padding-left:124px;}

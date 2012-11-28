@@ -33,7 +33,7 @@ var seconds;
 var intervalSet = false;
 var displayTime = 5000;
 //////console.log(currentRed);
-document.getElementById("container").style.backgroundColor = "rgb(" + oldRed + "," + oldGreen + "," + oldBlue + ")";
+document.getElementById("background").style.backgroundColor = "rgb(" + oldRed + "," + oldGreen + "," + oldBlue + ")";
 
 if (window.WebSocket) {
 	//webSocketsOn();
@@ -79,10 +79,10 @@ function clockCounter() {
 	if (document.getElementById('alarmtext').innerHTML != "00:00") {
 		//console.log(document.getElementById('alarmtext').innerHTML);
 		var split = document.getElementById('alarmtext').innerHTML.split(":");
-		console.log(split);
+		//console.log(split);
 		minutes = Number(split[0]);
 		seconds = Number(split[1]);
-		console.log(minutes + ":" + seconds);
+		//console.log(minutes + ":" + seconds);
 
 		if (seconds == 0) {
 			minutes -= 1;
@@ -122,7 +122,7 @@ function clockCounter() {
 }
 
 function messageWindow() {
-		document.getElementById("messageBox").style.backgroundColor = document.getElementById("container").style.backgroundColor;
+		document.getElementById("messageBox").style.backgroundColor = document.getElementById("background").style.backgroundColor;
 	//150 fadein -> 350 fadeout
 	//250 on fade in, flash on fade out
 	//if (document.getElementById('messageBox').className.indexOf("visShow") != -1) {
@@ -163,7 +163,7 @@ function backgroundChange() {
 	var greenStepAmount;
 	var blueStepAmount;
 	if (constantTime == null) {
-		document.getElementById("container").style.backgroundColor = "rgb(" + Math.floor(newRed) + "," + Math.floor(newGreen) + "," + Math.floor(newBlue) + ")";
+		document.getElementById("backround").style.backgroundColor = "rgb(" + Math.floor(newRed) + "," + Math.floor(newGreen) + "," + Math.floor(newBlue) + ")";
 		stepNum--;
 	}
 
@@ -177,7 +177,7 @@ function backgroundChange() {
 		currentRed += redStepAmount;
 		currentGreen += greenStepAmount;
 		currentBlue += blueStepAmount;
-		document.getElementById("container").style.backgroundColor = "rgb(" + Math.floor(currentRed) + "," + Math.floor(currentGreen) + "," + Math.floor(currentBlue) + ")";
+		document.getElementById("background").style.backgroundColor = "rgb(" + Math.floor(currentRed) + "," + Math.floor(currentGreen) + "," + Math.floor(currentBlue) + ")";
 	}
 	if (constantTime == settime / 2 && constantTime != 0) {
 		////console.log("YYEAAAH");
@@ -185,7 +185,7 @@ function backgroundChange() {
 		//////console.log(currentRed);
 		currentBlue = midBlue;
 		currentGreen = midGreen;
-		document.getElementById("container").style.backgroundColor = "rgb(" + currentRed + "," + currentGreen + "," + currentBlue + ")";
+		document.getElementById("background").style.backgroundColor = "rgb(" + currentRed + "," + currentGreen + "," + currentBlue + ")";
 	}
 	if (constantTime < settime / 2 && constantTime > 0) {
 		//////console.log(steps - (steps/2));
@@ -198,7 +198,7 @@ function backgroundChange() {
 		currentGreen += greenStepAmount;
 		currentBlue += blueStepAmount;
 		////////console.log(currentRed);
-		document.getElementById("container").style.backgroundColor = "rgb(" + Math.floor(currentRed) + "," + Math.floor(currentGreen) + "," + Math.floor(currentBlue) + ")";
+		document.getElementById("background").style.backgroundColor = "rgb(" + Math.floor(currentRed) + "," + Math.floor(currentGreen) + "," + Math.floor(currentBlue) + ")";
 		//////console.log("post-change"+currentRed);
 	}
 
