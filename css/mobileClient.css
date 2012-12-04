@@ -1,6 +1,6 @@
 /* CSS crunched with Crunch - http://crunchapp.net/ */
-body{height:480px;width:320px;margin-top:-20px;margin-left:0px;margin-bottom:0px;font-family:Helvetica,Arial,sans-serif;}body .ui-page{height:420px;}
-body .container{overflow:hidden;background-image:url('BackgroundTexture.png');float:left;width:320px;height:500px;background-color:#8e4d13;}body .container .containeything{float:left;margin:20px 25px 25px 25px;height:455px;width:270px;}body .container .containeything .timetop{float:left;width:270px;font-size:85px;font-style:bold;color:#cbcbcb;text-align:center;}body .container .containeything .timetop span{text-shadow:0px 5px 5px rgba(0, 0, 0, 0.5);line-height:85px;}
+body{background-image:url('BackgroundTexture.png');background-color:#8e4d13;height:480px;width:320px;margin:-20px auto 0px auto;font-family:Helvetica,Arial,sans-serif;}body .ui-page{height:480px;}
+body .container{overflow:hidden;float:left;width:320px;height:480px;}body .container .containeything{float:left;margin:20px 25px 25px 25px;height:455px;width:270px;}body .container .containeything .timetop{float:left;width:270px;font-size:85px;font-style:bold;color:#cbcbcb;text-align:center;}body .container .containeything .timetop span{text-shadow:0px 5px 5px rgba(0, 0, 0, 0.5);line-height:85px;}
 body .container .containeything .slider{position:relative;float:left;height:30px;width:270px;}body .container .containeything .slider .zero{left:0px;}
 body .container .containeything .slider .one{left:67px;}
 body .container .containeything .slider .two{left:135px;}
