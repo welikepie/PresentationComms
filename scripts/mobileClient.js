@@ -45,6 +45,8 @@ function pauseMeSneakily(){
 function reset(){
 	pauseMeSneakily();
 	document.getElementById('timeywimey').innerHTML = "<span>00:00</span>";
+	document.getElementsByTagName("a")[0].style.left="0%";
+	document.getElementsByTagName("a")[0].title="0";
 }
 
 function start(){
