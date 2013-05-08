@@ -140,7 +140,8 @@ function messageWindow() {
 		$(this).attr('class', 'deshock');
 		next();
 	});
-panicTimeout = window.setInterval(function(){		
+panicTimeout = window.setInterval(function(){	
+	document.getElementById("messageBox").style.backgroundColor = document.getElementById("background").style.backgroundColor;	
 	$("#frontBlast").queue(function(next) {
 		$(this).attr('class', 'shock');
 		next();

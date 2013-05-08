@@ -1,5 +1,5 @@
 /* CSS crunched with Crunch - http://crunchapp.net/ */
-html{-webkit-transition:rotateX(0deg);-moz-transition:rotateX(0deg);-ms-transition:rotateX(0deg);-o-transition:rotateX(0deg);transition:rotateX(0deg);height:768px;}
+html{-webkit-transition:rotateX(0deg);-moz-transition:rotateX(0deg);-ms-transition:rotateX(0deg);-o-transition:rotateX(0deg);transition:rotateX(0deg);}
 body{margin:0px;background-image:url('BackgroundTexture.png');font-smooth:always;}body .visHide{opacity:0;-webkit-transition:opacity 0.4s;-moz-transition:opacity 0.4s;-ms-transition:opacity 0.4s;-o-transition:opacity 0.4s ;transition:opacity 0.4s;}
 body .visShow{opacity:1;-webkit-transition:opacity 0.4s;-moz-transition:opacity 0.4s;-ms-transition:opacity 0.4s;-o-transition:opacity 0.4s ;transition:opacity 0.4s;}
 body .hidden{opacity:0;width:0px;height:0px;display:none;}
