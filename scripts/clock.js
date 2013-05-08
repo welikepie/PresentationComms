@@ -32,6 +32,8 @@ var minutes;
 var seconds;
 var intervalSet = false;
 var displayTime = 5000;
+var panic = false;
+var panicTimeout;
 //////console.log(currentRed);
 document.getElementById("background").style.backgroundColor = "rgb(" + oldRed + "," + oldGreen + "," + oldBlue + ")";
 
@@ -122,6 +124,36 @@ function clockCounter() {
 }
 
 function messageWindow() {
+	//ask arran the behaviour he wants specifically.
+	
+	if(panic == true){
+		clearInterval(panicTimeout);
+			document.getElementById("messageBox").style.backgroundColor = document.getElementById("background").style.backgroundColor;
+		//document.getElementById("#frontBlast")
+		$("#frontBlast").clearQueue();
+	$("#frontBlast").queue(function(next) {
+		$(this).attr('class', 'shock');
+		next();
+	})
+		.delay(150) //time of in animation + time you want white for
+	.queue(function(next) {
+		$(this).attr('class', 'deshock');
+		next();
+	});
+panicTimeout = window.setInterval(function(){		
+	$("#frontBlast").queue(function(next) {
+		$(this).attr('class', 'shock');
+		next();
+	})
+		.delay(150) //time of in animation + time you want white for
+	.queue(function(next) {
+		$(this).attr('class', 'deshock');
+		next();
+	});
+},600);
+	
+	}
+	if(panic == false){
 		document.getElementById("messageBox").style.backgroundColor = document.getElementById("background").style.backgroundColor;
 	//150 fadein -> 350 fadeout
 	//250 on fade in, flash on fade out
@@ -145,12 +177,11 @@ function messageWindow() {
 	})
 		.delay(150) //delaying time of animation
 	.queue(function(next) { $(this).attr('class','fastDissipate'); next();});
-
-
 	$("#messageBox").delay(displayTime).queue(function(next) {
 		$(this).attr('class', 'message visHide');
 		next();
 	});
+	}
 }
 
 function backgroundChange() {
@@ -214,13 +245,24 @@ function backgroundChange() {
 
 		callback : function(message) {// RECEIVED A MESSAGE.
 
-			if (message.indexOf("|time|") == -1 && message.indexOf("|pause|") == -1) {
+			if (message.indexOf("|set|") == -1 && message.indexOf("|time|") == -1 && message.indexOf("|pause|") == -1) {
 				document.getElementById("messageBox").innerHTML = "<div id='messageContainer'><p>" + message + "</div></p>";
 				document.getElementById("messageBox").className = "message visShow";
 				timeLimit = 0;
 				messageWindow();
 			}
-
+	if (message.indexOf("|set|") != -1) {
+				if(message.indexOf("noPanic") == -1){
+					panic = true;
+				}
+				else{
+					panic = false;
+					clearInterval(panicTimeout);
+					document.getElementById("messageBox").className="message visHide";
+				}
+				console.log(panic);
+			}
+			
 			if (message.indexOf("|pause|") != -1) {
 				////console.log(message);
 				pause();

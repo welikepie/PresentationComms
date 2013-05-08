@@ -19,8 +19,19 @@
 		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		
 		<script src="scripts/jqueryCore1-7-1.js"></script>
 		<script src="scripts/jqueryMobile1-1.js"></script>
+			   <script>
+                 $(document).bind("mobileinit", function() {
+                       $.mobile.autoInitializePage = false;
+                       $.mobile.defaultPageTransition = 'none';
+                       $.mobile.touchOverflowEnabled = false;
+                       $.mobile.defaultDialogTransition = 'none';
+                       $.mobile.loadingMessage = '' ;                 
+                  });
+            </script>
+		 
 	</head>
 	<body>
 		<div class="container">
@@ -35,7 +46,7 @@
 				<div class="menu">
 					<div class="leftButtons">
 						<div class="pause" id="pause">
-							<span onclick="pauseMe()">pause</span>
+							<span>pause</span>
 						</div>
 						<div class="reset" id="reset">
 							<span>reset</span>
@@ -47,24 +58,24 @@
 				</div>
 				<div class="sayings">
 					<!--//onclick messageParse('one')-->
-					<div class = "rowOrder" onclick="messageParse('one')">
+					<div class = "rowOrder">
 						<div class = "things sayingThings" id="messageOne">
-							<span id="messageone">Last Question</span>
+							<span id="message1">Last Question</span>
 						</div>
 						<div class = "button buttonThings" ></div>
 					</div>
 					
-					<div class = "rowOrder" onclick="messageParse('two')">
+					<div class = "rowOrder">
 						<div class = "things sayingThings" id="messageTwo">
-							<span id="messagetwo">5 Minutes Left</span>
+							<span id="message2">5 Minutes Left</span>
 						</div>
 						<div class = "button buttonThings">
 
 						</div>
 					</div>
-					<div class = "rowOrder" onclick="messageParse('three')">
+					<div class = "rowOrder">
 						<div class = "things sayingThings" id="messageThree">
-							<span id="messagethree">Get off the Stage</span>
+							<span id="message3">Get off the Stage</span>
 						</div>
 						<div class = "button buttonThings">
 						</div>
@@ -72,7 +83,10 @@
 
 				</div>
 				<textarea class="textfield" id="messageBox" wrap = "virtual"></textarea>
-				<div class="rightButton" onclick = "pubnubSend()">
+				<div id="leftButton">
+					<span>panic</span>
+				</div>
+				<div id="rightButton">
 					<span>send</span>
 				</div>
 			</div>

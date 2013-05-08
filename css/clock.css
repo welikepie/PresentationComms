@@ -1,8 +1,10 @@
 /* CSS crunched with Crunch - http://crunchapp.net/ */
-html{-webkit-transition:rotatex(0deg);-moz-transition:rotatex(0deg);-ms-transition:rotatex(0deg);-o-transition:rotatex(0deg);transition:rotatex(0deg);height:768px;}
+html{-webkit-transition:rotateX(0deg);-moz-transition:rotateX(0deg);-ms-transition:rotateX(0deg);-o-transition:rotateX(0deg);transition:rotateX(0deg);height:768px;}
 body{margin:0px;background-image:url('BackgroundTexture.png');font-smooth:always;}body .visHide{opacity:0;-webkit-transition:opacity 0.4s;-moz-transition:opacity 0.4s;-ms-transition:opacity 0.4s;-o-transition:opacity 0.4s ;transition:opacity 0.4s;}
 body .visShow{opacity:1;-webkit-transition:opacity 0.4s;-moz-transition:opacity 0.4s;-ms-transition:opacity 0.4s;-o-transition:opacity 0.4s ;transition:opacity 0.4s;}
 body .hidden{opacity:0;width:0px;height:0px;display:none;}
+body .shock{opacity:1;-webkit-transition:opacity 0.3s;-moz-transition:opacity 0.3s;-ms-transition:opacity 0.3s;-o-transition:opacity 0.3s ;transition:opacity 0.3s;}
+body .deshock{opacity:0;-webkit-transition:opacity 0.3s;-moz-transition:opacity 0.3s;-ms-transition:opacity 0.3s;-o-transition:opacity 0.3s ;transition:opacity 0.3s;}
 body .blast{opacity:1;-webkit-transition:opacity 0.15s;-moz-transition:opacity 0.15s;-ms-transition:opacity 0.15s;-o-transition:opacity 0.15s ;transition:opacity 0.15s;}
 body .dissipate{opacity:0;-webkit-transition:opacity 1.5s;-moz-transition:opacity 1.5s;-ms-transition:opacity 1.5s;-o-transition:opacity 1.5s ;transition:opacity 1.5s;}
 body .fastDissipate{opacity:0;-webkit-transition:opacity 0.15s;-moz-transition:opacity 0.15s;-ms-transition:opacity 0.15s;-o-transition:opacity 0.15s ;transition:opacity 0.15s;}
@@ -11,6 +13,6 @@ body #container{margin-left:auto;margin-right:auto;width:1024px;height:768px;}bo
 body #container .alarmdisplay{float:left;width:100%;text-align:center;margin:0px auto;}body #container .alarmdisplay #alarmtext{font-smooth:always;display:block;font-family:Helvetica,Arial,sans-serif;margin:159px auto 0px auto;text-align:center;font-size:315px;line-height:315px;font-weight:bold;color:#cbcbcb;text-shadow:0px 7px 7px rgba(0, 0, 0, 0.4);}
 body #container .minutesLabel{padding-left:187px;padding-right:124px;}
 body #container .secondsLabel{padding-right:187px;padding-left:124px;}
-body #container .minutesLabel,body #container .secondsLabel{float:left;width:200px;float:left;}body #container .minutesLabel p,body #container .secondsLabel p{font-family:Helvetica,Arial,sans-serif;font-weight:200;font-size:30px;text-align:center;color:#c9c9c9;text-shadow:0px 3px 3px rgba(0, 0, 0, 0.5);}
+body #container .minutesLabel,body #container .secondsLabel{width:200px;float:left;}body #container .minutesLabel p,body #container .secondsLabel p{font-family:Helvetica,Arial,sans-serif;font-weight:200;font-size:30px;text-align:center;color:#c9c9c9;text-shadow:0px 3px 3px rgba(0, 0, 0, 0.5);}
 body #container .gradientbox{float:left;margin:30px 0px 0px 50px;}body #container .gradientbox .gradient{display:block;width:925px;height:53px;background:rgba(0, 0, 0, 0);float:left;background-image:url('ProgressBar.png');border-radius:30px;}
 footer{clear:left;}footer p{float:left;}

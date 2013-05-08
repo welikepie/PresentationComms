@@ -4,15 +4,37 @@ var started = false;
 var minutes;
 var seconds;
 var intervalId = null;
+var panic = false;
 var channelToConnect = "speaker";
 //var channelToConnect = prompt("Specify Channel to broadcast to. Case sensitive.", "");
 // ^ uncomment this to define which channel to connect this to.
 
-document.getElementById("pause").addEventListener('click', pauseMe);
-document.getElementById("start").addEventListener('click', start);
-document.getElementById("reset").addEventListener('click', reset);
+$('#pause').off('click').on('click',pauseMe); 
+$('#start').off('click').on('click',start); 
+$('#reset').off('click').on('click',reset); 
+$('#leftButton').off('click').on('click',pubnubPanic); 
+//document.getElementById("leftButton").addEventListener('click');
+document.getElementById("rightButton").addEventListener('click',pubnubSend);
+
+var rows = document.getElementsByClassName("rowOrder");
+
+//array forEach
+for(var i = 0; i < rows.length; i++){
+	bind_event(i+1);	
+}
+
+function bind_event(t) {
+    var td = rows[t-1];
+    if (typeof window.addEventListener==='function'){
+      $(td).off('click').on('click',function(){
+      	messageParse(t);
+      }); 
+    }
+}
+
 
 function messageParse(stringy){
+	console.log(stringy);
 	var IDtoFetch = "message"+stringy;
 			{	PUBNUB.publish({             // SEND A MESSAGE.
                 channel : channelToConnect,
@@ -20,6 +42,27 @@ function messageParse(stringy){
             	})
             }
 }
+function pubnubPanic(){
+	console.log("dpoing something");
+	panic = !panic;
+	if(panic == true){
+		console.log("panic");
+		document.getElementById("leftButton").className = "shadow";
+		PUBNUB.publish({             // SEND A MESSAGE.
+                channel : channelToConnect,
+                message : "|set|panic"
+            	})
+	}
+	else{
+		console.log("noPanic");
+		document.getElementById("leftButton").className = "";
+		PUBNUB.publish({             // SEND A MESSAGE.
+                channel : channelToConnect,
+                message : "|set|noPanic"
+            	})
+	}
+}
+
 function pauseMe(){
 	pause = true;
 	started = false;
